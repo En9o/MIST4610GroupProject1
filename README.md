@@ -31,9 +31,9 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 
 **8.** Caddies
 
-**9.** PlayerCaddyPairs
+**9.** PlayerCaddyPairs The bonding entity between Players and Caddies. It stores the individual IDs of the players and caddies as a composite primary key
 
-**10.** Countries
+**10.** Countries: The Countries entity has two separate one-to-many relationships with the Players and Courses entities. This is because each country can have many players from there and possess multiple courses within its borders. 
 
 **11.** Courses: The Courses entity represents courses used in tournaments held by the PGA Tour. Within is each course's unique ID, name, par score, total length, and country where it resides. The country is integrated by the one-to-many relationship between Countries and Courses. 
 
