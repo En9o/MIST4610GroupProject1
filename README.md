@@ -63,8 +63,8 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 **Leaderboard Table**
 | Column Name | Description | Data Type | Size | Format | Key |
 |:------------|:------------|:----------|:-----|:-------|:----|
-| tournament_id | composite primary key from one-to-many relationship with Tournaments Table | INT | | | PK/FK |
-| player_id | composite primary key from one-to-many relationship with Players Table | INT | | | PK/FK |
+| tournament_id | composite primary key from one-to-many relationship with Tournaments Table | INT | | | PK |
+| player_id | composite primary key from one-to-many relationship with Players Table | INT | | | PK |
 | total_score | total score the player had during the tournament | INT | | | |
 | position | finishing position of the player in the tournament | INT | | | |
 
@@ -80,8 +80,8 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 | Column Name | Description | Data Type | Size | Format | Key |
 |:------------|:------------|:----------|:-----|:-------|:----|
 | score_id | primary key of Scores Table | INT | | | PK |
-| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK/FK |
-| round_id | foreign key from Rounds Table serving as a composite primary key | INT | | | PK/FK |
+| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK |
+| round_id | foreign key from Rounds Table serving as a composite primary key | INT | | | PK |
 | strokes | total strokes taken by the player in that round | INT | | | |
 | under_par | +/- value of player based on performance on holes in the round | INT | | | |
 
@@ -96,8 +96,8 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 | Column Name | Description | Data Type | Size | Format | Key |
 |:------------|:------------|:----------|:-----|:-------|:----|
 | deal_id | primary key of the SponsorshipDeals Table | INT | | | PK |
-| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK/FK |
-| sponsor_id | foreign key from Sponsors Table serving as a composite primary key | INT | | | PK/FK |
+| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK |
+| sponsor_id | foreign key from Sponsors Table serving as a composite primary key | INT | | | PK |
 | deal_amount | sponsorship amount paid to the player | DECIMAL | (15,2) | | |
 
 **Caddies Table**
@@ -110,8 +110,8 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 **PlayerCaddyPairs Table**
 | Column Name | Description | Data Type | Size | Format | Key |
 |:------------|:------------|:----------|:-----|:-------|:----|
-| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK/FK |
-| caddy_id | foreign key from Caddies Table serving as a composite primary key | INT | | | PK/FK |
+| player_id | foreign key from Players Table serving as a composite primary key | INT | | | PK |
+| caddy_id | foreign key from Caddies Table serving as a composite primary key | INT | | | PK |
 
 **Countries Table**
 | Column Name | Description | Data Type | Size | Format | Key |
