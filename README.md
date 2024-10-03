@@ -134,10 +134,10 @@ Query 1 (Simple): How many courses in each country?
 
 use ha_group8;
 
-SELECT Countries.country_name, COUNT(Courses.course_id) AS total_courses
-FROM Courses
-JOIN Countries ON Courses.country_id = Countries.country_id
-GROUP BY Countries.country_name;
+SELECT Countries.country_name, COUNT(Courses.course_id) AS total_courses <br>
+FROM Courses <br>
+JOIN Countries ON Courses.country_id = Countries.country_id <br>
+GROUP BY Countries.country_name; <br>
 
 | Country Name  | Total Courses |
 |---------------|---------------|
