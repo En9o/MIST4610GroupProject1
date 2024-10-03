@@ -148,7 +148,29 @@ GROUP BY Countries.country_name; <br>
 | USA           | 2             |
 | Spain         | 1             |
 | UK            | 2             |
-     
+
+Query 2 (Complex): Which players (with a rank 2 or lower) are making more money from sponsorship deals than players with a rank of 1?
+
+WITH AvgRank1Sponsorship AS (  
+    SELECT AVG(SponsorshipDeals.deal_amount) AS avg_sponsorship <br>
+    FROM SponsorshipDeals <br>
+    JOIN Players ON SponsorshipDeals.player_id = Players.player_id <br>
+    WHERE Players.rank = 1 <br>
+) <br>
+SELECT Players.player_fn, Players.player_ln, SUM(SponsorshipDeals.deal_amount) AS total_sponsorship <br>
+FROM Players <br>
+JOIN SponsorshipDeals ON Players.player_id = SponsorshipDeals.player_id <br>
+WHERE Players.rank > 1 <br>
+GROUP BY Players.player_fn, Players.player_ln <br>
+HAVING SUM(SponsorshipDeals.deal_amount) > (SELECT avg_sponsorship FROM AvgRank1Sponsorship); <br>
+
+| First Name | Last Name  | Total Sponsorship |
+|------------|------------|-------------------|
+| Kenji      | Nakamura   | 550000.00         |
+| John       | Smith      | 500000.00         |
+| Jack       | Williams   | 520000.00         |
+
+
 
 ## Database Information
 **ha_group8**
