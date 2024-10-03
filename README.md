@@ -171,6 +171,26 @@ HAVING SUM(SponsorshipDeals.deal_amount) > (SELECT avg_sponsorship FROM AvgRank1
 | Jack       | Williams   | 520000.00         |
 
 
+Query 3 (Complex): How much does each industry give in sponsorship deals (in percentage)?
+
+WITH TotalSponsorship AS (
+    SELECT SUM(SponsorshipDeals.deal_amount) AS total_sponsorship
+    FROM SponsorshipDeals
+)
+SELECT Sponsors.industry, 
+       SUM(SponsorshipDeals.deal_amount) AS industry_total, 
+       (SUM(SponsorshipDeals.deal_amount) / (SELECT total_sponsorship FROM TotalSponsorship) * 100) AS percentage_contribution
+FROM SponsorshipDeals
+JOIN Sponsors ON SponsorshipDeals.sponsor_id = Sponsors.sponsor_id
+GROUP BY Sponsors.industry;
+
+| Industry    | Industry Total | Percentage Contribution |
+|-------------|----------------|-------------------------|
+| Watches     | 810000.00      | 17.880795               |
+| Apparel     | 1410000.00     | 31.125828               |
+| Tires       | 450000.00      | 9.933775                |
+| Equipment   | 1860000.00     | 41.059603               |
+
 
 ## Database Information
 **ha_group8**
