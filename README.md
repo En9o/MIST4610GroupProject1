@@ -130,5 +130,25 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 
 ## Ten Queries
 
+Query 1 (Simple): How many courses in each country?
+
+use ha_group8;
+
+SELECT Countries.country_name, COUNT(Courses.course_id) AS total_courses
+FROM Courses
+JOIN Countries ON Courses.country_id = Countries.country_id
+GROUP BY Countries.country_name;
+
+| Country Name  | Total Courses |
+|---------------|---------------|
+| Australia     | 2             |
+| Germany       | 1             |
+| Japan         | 1             |
+| South Africa  | 1             |
+| USA           | 2             |
+| Spain         | 1             |
+| UK            | 2             |
+     
+
 ## Database Information
 **ha_group8**
