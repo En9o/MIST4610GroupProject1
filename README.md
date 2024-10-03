@@ -173,16 +173,16 @@ HAVING SUM(SponsorshipDeals.deal_amount) > (SELECT avg_sponsorship FROM AvgRank1
 
 Query 3 (Complex): How much does each industry give in sponsorship deals (in percentage)?
 
-WITH TotalSponsorship AS (
-    SELECT SUM(SponsorshipDeals.deal_amount) AS total_sponsorship
-    FROM SponsorshipDeals
-)
-SELECT Sponsors.industry, 
-       SUM(SponsorshipDeals.deal_amount) AS industry_total, 
-       (SUM(SponsorshipDeals.deal_amount) / (SELECT total_sponsorship FROM TotalSponsorship) * 100) AS percentage_contribution
-FROM SponsorshipDeals
-JOIN Sponsors ON SponsorshipDeals.sponsor_id = Sponsors.sponsor_id
-GROUP BY Sponsors.industry;
+WITH TotalSponsorship AS ( <br>
+    SELECT SUM(SponsorshipDeals.deal_amount) AS total_sponsorship <br>
+    FROM SponsorshipDeals <br>
+) <br>
+SELECT Sponsors.industry, <br>
+       SUM(SponsorshipDeals.deal_amount) AS industry_total, <br>
+       (SUM(SponsorshipDeals.deal_amount) / (SELECT total_sponsorship FROM TotalSponsorship) * 100) AS percentage_contribution <br>
+FROM SponsorshipDeals <br>
+JOIN Sponsors ON SponsorshipDeals.sponsor_id = Sponsors.sponsor_id <br>
+GROUP BY Sponsors.industry; <br>
 
 | Industry    | Industry Total | Percentage Contribution |
 |-------------|----------------|-------------------------|
