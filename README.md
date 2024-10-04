@@ -191,6 +191,36 @@ GROUP BY Sponsors.industry; <br>
 | Tires       | 450000.00      | 9.933775                |
 | Equipment   | 1860000.00     | 41.059603               |
 
+Query 4 (simple): Determines the total amount of prize money for each tournament
 
-## Database Information
+SELECT t.tournament_name, SUM(t.total_prize) AS total_prize_money
+FROM Tournaments t
+GROUP BY t.tournament_name
+ORDER BY total_prize_money DESC;
+
+'US Open','15000.00'
+'Dubai Desert Classic','13000.75'
+'The Open','12000.75'
+'Spanish Masters','11000.95'
+'Masters','11000.50'
+'PGA Championship','10000.80'
+'Japan Open','9500.25'
+'Australian Open','9000.50'
+'Canadian Open','8500.75'
+'South African Open','8000.65'
+
+
+Query 5/8 (complex): Determines the golfer/caddie duo with the lowest points 
+
+SELECT p.player_fn AS player_first_name, p.player_ln AS player_last_name,
+       c.caddy_fn AS caddy_first_name, c.caddy_ln AS caddy_last_name, 
+       p.points
+FROM Players p
+JOIN PlayerCaddyPairs pcp ON p.player_id = pcp.player_id
+JOIN Caddies c ON pcp.caddy_id = c.caddy_id
+ORDER BY p.points ASC  
+LIMIT 8;  
+
+
+
 **ha_group8**
