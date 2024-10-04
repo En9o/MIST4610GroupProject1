@@ -192,5 +192,24 @@ GROUP BY Sponsors.industry; <br>
 | Equipment   | 1860000.00     | 41.059603               |
 
 
+Query 4 (simple): determine prize pool for each tournament
+
+SELECT t.tournament_name, SUM(t.total_prize) AS total_prize_money
+FROM Tournaments t
+GROUP BY t.tournaxment_name
+ORDER BY total_prize_money DESC;
+
+Query 5/8 (complex): Determine the golfer/caddie duo witht he loswet score
+
+SELECT p.player_fn AS player_first_name, p.player_ln AS player_last_name,
+       c.caddy_fn AS caddy_first_name, c.caddy_ln AS caddy_last_name, 
+       p.points
+FROM Players p
+JOIN PlayerCaddyPairs pcp ON p.player_id = pcp.player_id
+JOIN Caddies c ON pcp.caddy_id = c.caddy_id
+ORDER BY p.points ASC  
+LIMIT 8;  
+
+
 ## Database Information
 **ha_group8**
